@@ -44,6 +44,24 @@ public class PessoaFisicaCollectionRepository {
         pessoas.add(p);
         return p;
     }
+    public Optional<PessoaFisica> update(PessoaFisica pessoaFisica) {
+        Optional<PessoaFisica> pessoaASerBuscada = this.findById(pessoaFisica.getId());
+
+        if(pessoaASerBuscada.isPresent()) {
+            PessoaFisica pessoa = pessoaASerBuscada.get();
+            pessoa.setCpf(pessoaFisica.getCpf());
+            pessoa.setNome(pessoaFisica.getNome());
+            pessoa.setNascimento(pessoaFisica.getNascimento());
+
+            return Optional.of(pessoa);
+        }
+
+        return Optional.empty();
+    }
+
+    public void delete(Long id) {
+        pessoas.removeIf(p -> p.getId().equals(id));
+    }
 
 
 }
