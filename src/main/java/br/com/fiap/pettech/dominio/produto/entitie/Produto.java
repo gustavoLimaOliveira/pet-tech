@@ -12,8 +12,8 @@ public class Produto {
 
         public Produto() {}
 
-    public Produto(UUID id, String nome, String descricao, String urlImagem, double preco) {
-        this.id = id;
+    public Produto(String nome, String descricao, String urlImagem, double preco) {
+        this.id = UUID.randomUUID();
         this.nome = nome;
         this.descricao = descricao;
         this.urlImagem = urlImagem;
