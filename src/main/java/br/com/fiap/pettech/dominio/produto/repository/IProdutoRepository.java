@@ -10,4 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface IProdutoRepository extends JpaRepository<Produto, UUID> {
+
+
 }
