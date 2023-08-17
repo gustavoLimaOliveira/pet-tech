@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "bc5d0d44-a271-40b6-ab2c-11c10de02c55",
+		"name": "Endereço",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4167812"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rua\": \"Rua das Flores\",\r\n    \"cidade\": \"Cidade A\",\r\n    \"estado\": \"SP\",\r\n    \"cep\": \"03000-202\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/enderecos",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"enderecos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/enderecos",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"enderecos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/enderecos/1",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"enderecos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"rua\": \"Rua das rosas\",\r\n    \"cidade\": \"Cidade b\",\r\n    \"estado\": \"SP\",\r\n    \"cep\": \"03000-202\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/enderecos/1",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"enderecos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/enderecos/10",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"enderecos",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
