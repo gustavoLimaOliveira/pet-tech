@@ -1,8 +1,8 @@
-package br.com.fiap.pettech.dominio.produto.controller.exception;
+package br.com.fiap.pettech.exception.controller;
 
-import br.com.fiap.pettech.dominio.produto.service.exception.ControllerNotFoundException;
-import br.com.fiap.pettech.dominio.produto.service.exception.DatabaseException;
-import br.com.fiap.pettech.dominio.produto.service.exception.DefaultError;
+import br.com.fiap.pettech.exception.service.ControllerNotFoundException;
+import br.com.fiap.pettech.exception.service.DatabaseException;
+import br.com.fiap.pettech.exception.service.DefaultError;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
