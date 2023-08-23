@@ -32,11 +32,31 @@ nome VARCHAR(100) NOT NULL,
 nascimento DATE NOT NULL
 );
 
-CREATE TABLE endereco (
+CREATE TABLE tb_endereco (
     id SERIAL PRIMARY KEY,
     rua VARCHAR(255) NOT NULL,
     cidade VARCHAR(255) NOT NULL,
     estado VARCHAR(2) NOT NULL,
     cep VARCHAR(10) NOT NULL
 );
+
+create table tb_pessoa(
+	id bigserial primary key,
+	nome varchar(255),
+	nascimento Date,
+	cpf varchar(14),
+	email varchar(255)
+);
+
+drop table if exists tb_endereco;
+
+alter table tb_endereco 
+add column pessoa_id bigint not null;
+
+
+alter table tb_endereco 
+add constraint fk_endereco_pessoa
+foreign key (pessoa_id)
+references tb_pessoa(id);
+
 ```

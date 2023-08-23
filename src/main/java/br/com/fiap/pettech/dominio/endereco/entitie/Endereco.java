@@ -1,6 +1,7 @@
 package br.com.fiap.pettech.dominio.endereco.entitie;
 
 import br.com.fiap.pettech.dominio.endereco.dto.EnderecoDTO;
+import br.com.fiap.pettech.dominio.pessoa.entity.Pessoa;
 import jakarta.persistence.*;
 
 @Table(name="tb_endereco")
@@ -15,6 +16,10 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String cep;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id", nullable = false)
+    private Pessoa pessoa;
 
     public Endereco() {}
 
