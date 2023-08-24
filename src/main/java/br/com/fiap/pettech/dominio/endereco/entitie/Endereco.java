@@ -1,6 +1,7 @@
 package br.com.fiap.pettech.dominio.endereco.entitie;
 
 import br.com.fiap.pettech.dominio.endereco.dto.EnderecoDTO;
+import br.com.fiap.pettech.dominio.endereco.dto.EnderecoPessoaDTO;
 import br.com.fiap.pettech.dominio.pessoa.entity.Pessoa;
 import jakarta.persistence.*;
 
@@ -44,6 +45,15 @@ public class Endereco {
         this.cep = dto.cep();
     }
 
+    public Endereco(EnderecoPessoaDTO dto, Pessoa pessoa) {
+        this.id = dto.id();
+        this.rua = dto.rua();
+        this.cidade = dto.cidade();
+        this.estado = dto.estado();
+        this.cep = dto.cep();
+        this.pessoa = pessoa;
+    }
+
     public Long getId() {
         return id;
     }
@@ -82,5 +92,13 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

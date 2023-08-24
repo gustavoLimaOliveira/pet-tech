@@ -1,6 +1,7 @@
 package br.com.fiap.pettech.dominio.pessoa.controller;
 
-import br.com.fiap.pettech.dominio.pessoa.dto.PessoaDTO;
+import br.com.fiap.pettech.dominio.pessoa.dto.PessoaEnderecoUsuarioDTO;
+import br.com.fiap.pettech.dominio.pessoa.dto.PessoaUsuarioDTO;
 import br.com.fiap.pettech.dominio.pessoa.service.PessoaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class PessoaController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PessoaDTO>> findAll(
+    public ResponseEntity<Page<PessoaEnderecoUsuarioDTO>> findAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage
     ) {
@@ -35,21 +36,21 @@ public class PessoaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PessoaDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<PessoaEnderecoUsuarioDTO> findById(@PathVariable Long id) {
         var pessoa = pessoaService.findById(id);
         return ResponseEntity.ok(pessoa);
     }
 
     @PostMapping
-    public ResponseEntity<PessoaDTO> save(@Valid @RequestBody PessoaDTO dto) {
+    public ResponseEntity<PessoaUsuarioDTO> save(@Valid @RequestBody PessoaUsuarioDTO dto) {
         var pessoa = pessoaService.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand((pessoa.id())).toUri();
         return ResponseEntity.created(uri).body(pessoa);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaDTO> update(
-            @Valid @RequestBody PessoaDTO dto,
+    public ResponseEntity<PessoaUsuarioDTO> update(
+            @Valid @RequestBody PessoaUsuarioDTO dto,
             @PathVariable Long id) {
         var pessoa = pessoaService.update(id, dto);
         return ResponseEntity.ok(pessoa);

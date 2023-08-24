@@ -1,6 +1,6 @@
 package br.com.fiap.pettech.dominio.endereco.controller;
 
-import br.com.fiap.pettech.dominio.endereco.dto.EnderecoDTO;
+import br.com.fiap.pettech.dominio.endereco.dto.EnderecoPessoaDTO;
 import br.com.fiap.pettech.dominio.endereco.service.EnderecoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<EnderecoDTO>> findAll(
+    public ResponseEntity<Page<EnderecoPessoaDTO>> findAll(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "linesPerPage", defaultValue = "10") Integer linesPerPage
     ) {
@@ -34,21 +34,21 @@ public class EnderecoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EnderecoDTO> findById(@PathVariable Long id) {
+    public ResponseEntity<EnderecoPessoaDTO> findById(@PathVariable Long id) {
         var endereco = enderecoService.findById(id);
         return ResponseEntity.ok(endereco);
     }
 
     @PostMapping
-    public ResponseEntity<EnderecoDTO> save(@Valid @RequestBody EnderecoDTO dto) {
+    public ResponseEntity<EnderecoPessoaDTO> save(@Valid @RequestBody EnderecoPessoaDTO dto) {
         var endereco = enderecoService.save(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand((endereco.id())).toUri();
         return ResponseEntity.created(uri).body(endereco);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EnderecoDTO> update(
-            @Valid @RequestBody EnderecoDTO dto,
+    public ResponseEntity<EnderecoPessoaDTO> update(
+            @Valid @RequestBody EnderecoPessoaDTO dto,
             @PathVariable Long id) {
         var endereco = enderecoService.update(id, dto);
         return ResponseEntity.ok(endereco);

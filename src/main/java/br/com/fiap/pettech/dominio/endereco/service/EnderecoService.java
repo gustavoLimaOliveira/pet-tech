@@ -1,8 +1,10 @@
 package br.com.fiap.pettech.dominio.endereco.service;
 
 import br.com.fiap.pettech.dominio.endereco.dto.EnderecoDTO;
+import br.com.fiap.pettech.dominio.endereco.dto.EnderecoPessoaDTO;
 import br.com.fiap.pettech.dominio.endereco.entitie.Endereco;
 import br.com.fiap.pettech.dominio.endereco.repository.IEnderecoRepository;
+import br.com.fiap.pettech.dominio.pessoa.repository.IPessoaRepository;
 import br.com.fiap.pettech.exception.service.ControllerNotFoundException;
 import br.com.fiap.pettech.exception.service.DatabaseException;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,44 +19,56 @@ import org.springframework.transaction.annotation.Transactional;
 public class EnderecoService {
 
     private final IEnderecoRepository enderecoRepository;
+    private final IPessoaRepository pessoaRepository;
 
     @Autowired
-    public EnderecoService(IEnderecoRepository enderecoRepository) {
+    public EnderecoService(
+            IEnderecoRepository enderecoRepository,
+            IPessoaRepository pessoaRepository) {
         this.enderecoRepository = enderecoRepository;
+        this.pessoaRepository = pessoaRepository;
     }
 
     @Transactional(readOnly = true)
-    public Page<EnderecoDTO> findAll(PageRequest pageRequest) {
+    public Page<EnderecoPessoaDTO> findAll(PageRequest pageRequest) {
         var enderecos = enderecoRepository.findAll(pageRequest);
-        return enderecos.map(EnderecoDTO::fromEntity);
+        return enderecos.map(EnderecoPessoaDTO::fromEntity);
     }
 
     @Transactional(readOnly = true)
-    public EnderecoDTO findById(Long id) {
+    public EnderecoPessoaDTO findById(Long id) {
         var endereco = enderecoRepository.findById(id).orElseThrow(
                 () -> new ControllerNotFoundException("Endereço não encontrado")
         );
 
-        return EnderecoDTO.fromEntity(endereco);
+        return EnderecoPessoaDTO.fromEntity(endereco);
     }
 
     @Transactional
-    public EnderecoDTO save(EnderecoDTO dto) {
-        var entity = EnderecoDTO.toEntity(dto);
-        var enderecoSaved = enderecoRepository.save(entity);
-        return EnderecoDTO.fromEntity(enderecoSaved);
+    public EnderecoPessoaDTO save(EnderecoPessoaDTO dto) {
+        try {
+            var pessoa = pessoaRepository.getReferenceById(dto.pessoa().id());
+            var entity = EnderecoPessoaDTO.toEntity(dto, pessoa);
+            var enderecoSaved = enderecoRepository.save(entity);
+            return EnderecoPessoaDTO.fromEntity(enderecoSaved);
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Pessoa não encontrada");
+        }
+
     }
 
     @Transactional
-    public EnderecoDTO update(Long id, EnderecoDTO dto) {
+    public EnderecoPessoaDTO update(Long id, EnderecoPessoaDTO dto) {
         try {
             Endereco entity = enderecoRepository.getReferenceById(id);
-            EnderecoDTO.mapperDtoToEntity(dto, entity);
+            var pessoa = pessoaRepository.getReferenceById(dto.pessoa().id());
+            EnderecoPessoaDTO.mapperDtoToEntity(dto, entity, pessoa);
             entity = enderecoRepository.save(entity);
-            return EnderecoDTO.fromEntity(entity);
+            return EnderecoPessoaDTO.fromEntity(entity);
 
         }  catch (EntityNotFoundException e) {
-            throw new ControllerNotFoundException("Endereço não encontrado, id: " + id);
+            throw new ControllerNotFoundException("Pessoa/Endereço não encontrado");
         }
     }
 

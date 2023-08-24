@@ -59,4 +59,14 @@ add constraint fk_endereco_pessoa
 foreign key (pessoa_id)
 references tb_pessoa(id);
 
+CREATE TABLE tb_usuario (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+   	password VARCHAR(255) NOT NULL
+);
+
+alter table tb_pessoa 
+add column usuario_id int unique,
+add constraint fk_usuario_id foreign key (usuario_id) references tb_usuario(id);
+
 ```
