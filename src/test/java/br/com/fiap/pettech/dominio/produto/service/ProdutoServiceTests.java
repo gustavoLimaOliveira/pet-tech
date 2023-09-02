@@ -3,7 +3,7 @@ package br.com.fiap.pettech.dominio.produto.service;
 import br.com.fiap.pettech.dominio.produto.dto.ProdutoDTO;
 import br.com.fiap.pettech.dominio.produto.entitie.Produto;
 import br.com.fiap.pettech.dominio.produto.repository.IProdutoRepository;
-import br.com.fiap.pettech.dominio.produto.service.exception.ControllerNotFoundException;
+import br.com.fiap.pettech.exception.service.ControllerNotFoundException;
 import br.com.fiap.pettech.testes.Factory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "8441a5fb-2b15-41f5-9f40-856c922e27da",
+		"name": "Pessoa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4167812"
+	},
+	"item": [
+		{
+			"name": "FindALL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/pessoas?pagina=1&tamanho=100",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"pessoas"
+					],
+					"query": [
+						{
+							"key": "pagina",
+							"value": "1"
+						},
+						{
+							"key": "tamanho",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/pessoas/3",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"pessoas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Gustavo Henrique de Lima Oliveira\",\r\n    \"nascimento\": \"1990-07-01\",\r\n    \"cpf\": \"12345678991\",\r\n    \"email\": \"gustavo@fiap.com.br\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/pessoas",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"pessoas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Vlad\",\r\n    \"nascimento\": \"1920-07-01\",\r\n    \"cpf\": \"12345678991\",\r\n    \"email\": \"vlad@fiap.com.br\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/pessoas/3",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"pessoas",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/pessoas/1",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"pessoas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

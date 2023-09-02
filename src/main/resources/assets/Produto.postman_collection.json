@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "41a6361c-1342-44bb-82db-6ab295f0d671",
+		"name": "Produto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4167812"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Ração Natural\",\r\n    \"descricao\": \"Uma ração saudavel\",\r\n    \"urlImagem\": \"URL imagem\",\r\n    \"preco\": 20.00,\r\n    \"categorias\": [\r\n        {\r\n            \"id\": 2,\r\n            \"nome\": \"Comestivel\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/produtos",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/produtos?pagina=0&tamanho=1",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "pagina",
+							"value": "0"
+						},
+						{
+							"key": "tamanho",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/produtos/c12fe472-f1fe-40c3-b093-8424283be15b",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"produtos",
+						"c12fe472-f1fe-40c3-b093-8424283be15b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \r\n        \"nome\": \"produto editado \",\r\n        \"descricao\": \"Descricao 1\",\r\n        \"urlImagem\": \"URL imagem\",\r\n        \"preco\": 50.99\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL_HOST}}/produtos/c12fe472-f1fe-40c3-b093-8424283be15b",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"produtos",
+						"c12fe472-f1fe-40c3-b093-8424283be15b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_HOST}}/produtos/dso-fkopasdf",
+					"host": [
+						"{{LOCAL_HOST}}"
+					],
+					"path": [
+						"produtos",
+						"dso-fkopasdf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
