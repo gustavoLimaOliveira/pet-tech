@@ -33,12 +33,12 @@ CREATE TABLE tb_endereco (
     cep VARCHAR(10) NOT NULL
 );
 
-create table tb_pessoa(
-	id bigserial primary key,
-	nome varchar(255),
-	nascimento Date,
-	cpf varchar(14),
-	email varchar(255)
+CREATE TABLE tb_pessoa (
+id BIGSERIAL PRIMARY KEY,
+cpf VARCHAR(11) not null,
+nome VARCHAR(100) not null,
+nascimento DATE not null,
+email varchar(255) not null
 );
 
 
@@ -60,6 +60,5 @@ alter table tb_pessoa
 add column usuario_id int unique,
 add constraint fk_usuario_id foreign key (usuario_id) references tb_usuario(id);
 
-add constraint fk_usuario_id foreign key (usuario_id) references tb_usuario(id);
 
 ```
