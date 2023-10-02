@@ -1,4 +1,4 @@
-# Projeto de Exemplo - Introdução ao Spring Boot
+# Pettech - Introdução ao Spring Boot
 
 Este projeto foi desenvolvido como parte de uma aula de pós-graduação na FIAP, com o objetivo de ensinar os conceitos fundamentais do Spring Boot e suas funcionalidades. O projeto aborda vários aspectos importantes do desenvolvimento de aplicativos Java, incluindo a criação de uma API REST, integração com banco de dados usando Spring Data JPA, validação de entrada de dados com Spring Validation e testes unitários e de integração.
 
